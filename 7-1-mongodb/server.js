@@ -188,6 +188,9 @@
 import mongoose from "mongoose";
 
 // establish connection
+const MONGO_URI =
+  "mongodb+srv://JASSIM-ALHUMAID:7ZeXbOiYLvoQQnnw@cluster0.xxxxx.mongodb.net/myDatabase?retryWrites=true&w=majority";
+mongoose.connect(MONGO_URI);
 
 // define schema
 const studentSchema = new mongoose.Schema({
@@ -215,10 +218,15 @@ async function readStudents() {
 readStudents();
 
 // update document
- async function updateStudent() {
-   await Student.updateOne({ name: "Ali" }, { age: 22 });
-   console.log("✅ Updated Ali");
- }
- updateStudent();
+async function updateStudent() {
+  await Student.updateOne({ name: "Ali" }, { age: 22 });
+  console.log("✅ Updated Ali");
+}
+updateStudent();
 
 // delete document
+async function deleteStudent() {
+  await Student.deleteOne({ name: "Sara" });
+  console.log("✅ Deleted Sara");
+}
+deleteStudent();
